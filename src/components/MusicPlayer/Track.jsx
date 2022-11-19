@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Track = ({ isPlaying, isActive, activeSong }) => {
-  console.log(activeSong);
 
   return(
     <div className="flex-1 flex items-center justify-start">

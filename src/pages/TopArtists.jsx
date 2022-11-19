@@ -3,7 +3,7 @@ import { ArtistCard, Error, Loader } from '../components';
 
 const TopArtists = () => {
     const { data, isFetching, error } = useGetTopChartsQuery();
-    const topArtistArr = data.slice(10,);
+    const topArtistArr = data?.slice(10,);
 
     if(isFetching)
         return <Loader title="Loading top Artists.." />

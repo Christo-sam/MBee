@@ -41,6 +41,10 @@ module.exports = {
           '100%': { transform: 'scale(0)' },
         },
       },
+      screens: {
+        'xsm': {'max':'440px'},
+        'xxsm': {'max':'340px'},
+      },
     },
   },
 };
