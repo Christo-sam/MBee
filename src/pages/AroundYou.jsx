@@ -13,7 +13,7 @@ const AroundYou = () => {
     useEffect(()=>{
         axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_z5fpYgxMFb4IOouCP6eActiGFhtpb&ipAddress=8.8.8.8`)
         .then((res)=>setCountry(res?.data?.location?.country))
-        .catch((err) => console.log(err))
+        .catch((err) => alert('Facing issues with getting your GeoLocation!!'))
         .finally(()=> setLoading(false))
     },[country]);
 
@@ -24,7 +24,7 @@ const AroundYou = () => {
 
 
     return(
-        <div className='flex flex-col'>
+        <div className='flex flex-col w-[100%] overflow-y-scroll hide-scrollbar pb-40'>
             <h2 className='font-bold text-3xl text-white text-left mt-4 mb-10'>
                 Around You <span className="font-black">
                     ({country})

@@ -12,7 +12,7 @@ const TopArtists = () => {
 
 
     return(
-        <div className='flex flex-col'>
+        <div className='flex flex-col w-[100%] overflow-y-scroll hide-scrollbar pb-40'>
             <h2 className='font-bold text-3xl text-white text-left mt-4 mb-10'>
                 Top Artists
             </h2>

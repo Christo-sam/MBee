@@ -1,23 +1,37 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RiCloseLine } from 'react-icons/ri';
 import { logo2 } from '../assets';
 import { links } from '../assets/constants';
-import { HiOutlineMenu } from 'react-icons/hi';
+import { HiOutlineHeart, HiOutlineMenu } from 'react-icons/hi';
+import { MdAddBox } from 'react-icons/md';
 
 
 const NavLinks = ({ handleClick }) => (
   <div className="mt-10">
-    {links.map((item) => (
+    {links.map((item, i) => (
       <NavLink 
-        key={item.name}
-        to={item.to}
-        className="flex flex-row justify-start items-center my-8 text-sm font-medium text-gray-400 hover:text-cyan-400"
-        onClick={() => handleClick && handleClick()}>
+          key={item.name}
+          to={item.to}
+          className="flex flex-row justify-start gap-[4px] items-center my-4 text-sm font-medium text-gray-400 hover:text-white"
+          onClick={() => handleClick && handleClick()}
+        >
         <item.icon className="w-6 h-6 mr-2" />
         {item.name}
       </NavLink>
     ))}
+
+    <div className='flex flex-col'>
+      <div className="flex flex-row justify-start gap-[4px] items-center mt-8 text-sm font-medium text-gray-400 hover:text-white">
+        <MdAddBox className="w-6 h-6 mr-2" />
+        <Link to='/playlist'>Create Playlist</Link>
+      </div>
+
+      <div className="flex flex-row justify-start gap-[4px] items-center my-4 text-sm font-medium text-gray-400 hover:text-white">
+        <HiOutlineHeart className="w-6 h-6 mr-2" />
+        <Link to='/liked-songs'>Liked Songs</Link>
+      </div>
+    </div>
   </div>
 );
 

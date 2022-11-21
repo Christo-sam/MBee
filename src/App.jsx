@@ -17,6 +17,8 @@ const App = () => {
 
   const [isValidImg, setIsValidImg] = useState(true);
 
+
+  // Checking if user is already logged in.
   useEffect(()=>{
     auth.onAuthStateChanged(async(user)=>{
         if (user){
@@ -25,6 +27,8 @@ const App = () => {
     });
 }, [userName]);
 
+
+  // Handling Sign-In/Sign-Out.
   const handleAuth = () => {
     if (!userName){
         auth
@@ -42,6 +46,8 @@ const App = () => {
     }
   };
 
+
+  // Setting User details into the Store, once Signed-In.
   const setUser = (user) => {
     dispatch(
         setUserLoginDetails({
@@ -53,6 +59,8 @@ const App = () => {
   }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
     <>
       {
@@ -60,7 +68,7 @@ const App = () => {
           <div className='relative flex'>
             <Sidebar />
               <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
-                <div className='flex-1 flex flex-row items-center justify-between px-2 pr-10 gap-10'>
+                <div className='flex-1 mt-[1rem] flex flex-row items-center justify-between px-2 pr-10 gap-[10rem]'>
                   <Searchbar />
                   <SignOut>
                     {
@@ -77,21 +85,16 @@ const App = () => {
                   </SignOut>
                 </div>
 
-                <div className="mt-[3rem] px-6 h-[calc(100vh-7rem)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-                  <div className="flex-1 h-fit pb-40">
-                    <Routes>
-                      <Route path="/" element={<Discover />} />
-                      <Route path="/top-artists" element={<TopArtists />} />
-                      <Route path="/top-charts" element={<TopCharts />} />
-                      <Route path="/around-you" element={<AroundYou />} />
-                      <Route path="/artists/:id" element={<ArtistDetails />} />
-                      <Route path="/songs/:songid" element={<SongDetails />} />
-                      <Route path="/search/:searchTerm" element={<Search />} />
-                    </Routes>
-                  </div>
-                  <div className="xl:sticky relative top-0 h-fit">
-                    <TopPlay />
-                  </div>
+                <div className="mt-[3rem] px-6 h-[calc(100vh-7rem)] flex">
+                  <Routes>
+                    <Route path="/" element={<Discover />} />
+                    <Route path="/top-artists" element={<TopArtists />} />
+                    <Route path="/top-charts" element={<TopCharts />} />
+                    <Route path="/around-you" element={<AroundYou />} />
+                    <Route path="/artists/:id" element={<ArtistDetails />} />
+                    <Route path="/songs/:songid" element={<SongDetails />} />
+                    <Route path="/search/:searchTerm" element={<Search />} />
+                  </Routes>
                 </div>
               </div>
 
