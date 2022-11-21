@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import  {Error, Loader, SongCard } from '../components';
+import  {Error, Loader, SongCard, TopPlay } from '../components';
 import { genres } from '../assets/constants';
 import { selectGenreListId } from '../redux/features/playerSlice';
 import { useGetSongsByGenreQuery } from '../redux/services/shazamCore';
@@ -19,9 +19,10 @@ const Discover = () => {
         return <Error />
 
     return(
-        <div className="flex flex-col">
+    <div className="overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
+        <div className="flex-1 flex flex-col h-fit pb-40">
             <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10">
-                <h2 className="font-bold text-3xl text-white text-left">Discover {genreTitle?genreTitle:'Pop'}</h2>
+                <h2 className="position-fixed font-bold text-3xl text-white text-left">Discover {genreTitle?genreTitle:'Pop'}</h2>
                 <select 
                     onChange={(e)=> dispatch(selectGenreListId(e.target.value)) } 
                     value={genreListId || 'pop'}
@@ -43,6 +44,11 @@ const Discover = () => {
                 ))}
             </div>
         </div>
+
+        <div className="xl:sticky relative top-0 h-fit">
+            <TopPlay />
+        </div> 
+    </div>
     )}
 
 export default Discover;
